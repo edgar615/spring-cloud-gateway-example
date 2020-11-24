@@ -1,0 +1,215 @@
+server:
+  port: 8080
+
+#hystrix:
+#  command:
+#    fallbackcmd:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 10000
+spring:
+  cloud:
+    gateway:
+      routes:
+#      - id: add_request_header_route
+#        uri: http://localhost:9001
+#        predicates:
+#        - Method=GET
+#        filters:
+#        - AddRequestHeader=X-Request-Foo, Bar
+#      - id: add_request_param_route
+#        uri: http://localhost:9001
+#        predicates:
+#        - Method=GET
+#        filters:
+#        - AddRequestParameter=foo,bar
+#        - id: add_request_param_route
+#          uri: http://localhost:9001
+#          predicates:
+#            - Method=GET
+#          filters:
+#            - AddRequestParameter=foo,bar
+#        - id: add_response_param_route
+#          uri: http://localhost:9001
+#          predicates:
+#            - Method=GET
+#          filters:
+#            - AddResponseHeader=X-Response-Foo, Bar
+#        - id: hytrix_route
+#          uri: http://localhost:9001
+#          predicates:
+#            - Method=GET
+#          filters:
+#            - Hystrix=hystrixTtest
+#        - id: hytrix_route
+#          uri: http://localhost:9001
+#          predicates:
+#            - Method=GET
+#          filters:
+#          - name: Hystrix
+#            args:
+#              name: fallbackcmd
+#              fallbackUri: forward:/fallback
+#        - id: circuit_breaker_route
+#          uri: http://localhost:9001
+#          predicates:
+#            - Method=GET
+#          filters:
+#            - CircuitBreaker=myCircuitBreaker
+#        - id: circuit_breaker_route
+#          uri: http://localhost:9001
+#          predicates:
+#            - Method=GET
+#          filters:
+#            - name: CircuitBreaker
+#              args:
+#                name: myCircuitBreaker
+#                fallbackUri: forward:/fallback
+#                statusCodes:
+#                  - 500
+#                  - "NOT_FOUND"
+#        - id: fallback_route
+#          uri: http://localhost:9001
+#          predicates:
+#            - Method=GET
+#            - Path=/fallback
+#          filters:
+#          - name: FallbackHeaders
+#            args:
+#              executionExceptionTypeHeaderName: Test-Header
+#        - id: map_request_header_route
+#          uri: http://localhost:9001
+#          predicates:
+#            - Method=GET
+#          filters:
+#            - MapRequestHeader=Blue, X-Request-Red
+#            - MapRequestHeader=Blue2, X-Request-Red2
+#        - id: prefixpath_route
+#          uri: http://localhost:9001
+#          predicates:
+#            - Method=GET
+#          filters:
+#            - PrefixPath=/mypath
+#        - id: preserve_host_route
+#          uri: http://localhost:9001
+#          filters:
+#            - PreserveHostHeader
+#        - id: dedupe_response_header_route
+#          uri: http://localhost:9001
+#          predicates:
+#            - Method=GET
+#          filters:
+#            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+#          - id: redirect_route
+#            uri: http://localhost:9001
+#            predicates:
+#              - Method=GET
+#            filters:
+#              - RedirectTo=302, http://localhost:9002
+#          - id: removerequestheader_route
+#            uri: http://localhost:9001
+#            predicates:
+#              - Method=GET
+#            filters:
+#              - RemoveRequestHeader=X-Request-Foo
+#            - id: removeresponseheader_route
+#              uri: http://localhost:9001
+#              predicates:
+#                - Method=GET
+#              filters:
+#                - RemoveResponseHeader=X-Response-Foo
+#            - id: removerequestparameter_route
+#              uri: http://localhost:9001
+#              predicates:
+#                - Method=GET
+#              filters:
+#                - RemoveRequestParameter=red
+#            - id: rewritepath_route
+#              uri: http://localhost:9001
+#              predicates:
+#                - Path=/red/**
+#              filters:
+#                - RewritePath=/red(?<segment>/?.*), $\{segment}
+#              - id: rewriteresponseheader_route
+#                uri: http://localhost:9001
+#                predicates:
+#                  - Method=GET
+#                filters:
+#                  - name: RewriteResponseHeader
+#                    args:
+#                      regexp: "[^&]+"
+#                      replacement: "***"
+#                - id: setrequestheader_route
+#                  uri: http://localhost:9001
+#                  predicates:
+#                    - Method=GET
+#                  filters:
+#                    - SetRequestHeader=X-Request-Red, Blue
+#        - id: setresponseheader_route
+#          uri: http://localhost:9001
+#          predicates:
+#            - Method=GET
+#          filters:
+#            - SetResponseHeader=X-Request-Red, Blue
+#          - id: setstatusint_route
+#            uri: http://localhost:9001
+#            predicates:
+#              - Method=GET
+#            filters:
+#              - SetStatus=401
+#          - id: nameRoot
+#            uri: http://localhost:9001
+#            predicates:
+#              - Path=/name/**
+#            filters:
+#              - StripPrefix=2
+#        - id: retry_test
+#          uri: http://localhost:9001
+#          predicates:
+#            - Method=GET
+#          filters:
+#            - name: Retry
+#              args:
+#                retries: 3
+#                statuses: INTERNAL_SERVER_ERROR
+#                methods: GET,POST
+#                backoff:
+#                  firstBackoff: 10ms
+#                  maxBackoff: 50ms
+#                  factor: 2
+#                  basedOnPreviousValue: false
+#          - id: set_request_host_header_route
+#            uri: http://localhost:8080
+#            predicates:
+#              - Method=GET
+#            filters:
+#              - name: SetRequestHostHeader
+#                args:
+#                  host: example.org
+#            - id: route
+#              uri: http://httpbin.org:80/get
+#              predicates:
+#                - After=2020-04-20T00:00:00+08:00[Asia/Shanghai]
+#              filters:
+#                - name: IpBlacklist
+#                  args:
+#                    blacklist:
+#                    - "192.168.2.100"
+#                    - "192.168.1.100"
+#          - id: route
+#            uri: http://httpbin.org:80/get
+#            predicates:
+#              - After=2020-04-20T00:00:00+08:00[Asia/Shanghai]
+#            filters:
+#              - IpBlacklist=192.168.2.100, 192.168.2.101
+#            - id: body_read
+#              uri: http://httpbin.org:80/post
+#              predicates:
+#                - After=2020-04-20T00:00:00+08:00[Asia/Shanghai]
+#                - name: ReadBodyPredicateFactory #使用ReadBodyPredicateFactory断言，将body读入缓存
+#                  args:
+#                    inClass: '#{T(String)}'
+#                    predicate: '#{@reqBodyPredicate}' #注入实现predicate接口类
+#              filters:
+#                - BodyLog

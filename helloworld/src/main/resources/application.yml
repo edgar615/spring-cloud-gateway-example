@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#      - id: hello-world
+#        uri: nf://nfInstance
+#        predicates:
+#        - Method=POST
+#        - name: ReadBodyPredicateFactory
+#          args:
+#            inClass: "#{T(String)}"
+#            predicate: "#{@readBodyPredicate}"
+#        filters:
+#          - NfIdInBody

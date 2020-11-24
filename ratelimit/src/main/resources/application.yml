@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+spring:
+  redis:
+    host: locahost
+    port: 6379
+    database: 0
+    password:
+  cloud:
+    gateway:
+      routes:
+        - id: limit_route
+          uri: http://localhost:9001
+          predicates:
+            - After=2020-04-20T00:00:00+08:00[Asia/Shanghai]
+          filters:
+            - name: RequestRateLimiter
+              args:
+                key-resolver: '#{@hostAddrKeyResolver}'
+                redis-rate-limiter.replenishRate: 1
+                redis-rate-limiter.burstCapacity: 1

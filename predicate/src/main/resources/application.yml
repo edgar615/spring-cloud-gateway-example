@@ -1,0 +1,71 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+#      - id: after_route
+#        uri: http://localhost:9001
+#        predicates:
+#        - After=2020-08-30T17:30:00.843+08:00[Asia/Shanghai]
+#      - id: before_route
+#        uri: http://localhost:9001
+#        predicates:
+#        - Before=2020-08-30T17:30:00.843+08:00[Asia/Shanghai]
+#        - id: between_route
+#          uri: http://localhost:9001
+#          predicates:
+#          - Between=2020-08-22T17:30:00.843+08:00[Asia/Shanghai],2020-08-30T17:30:00.843+08:00[Asia/Shanghai]
+#        - id: cookie_route
+#          uri: http://localhost:9001
+#          predicates:
+#          - Cookie=user,edgar(\d+)
+#        - id: header_route
+#          uri: http://localhost:9001
+#          predicates:
+#          - Header=X-Request-Id,\d+
+#        - id: host_route
+#          uri: http://localhost:9001
+#          predicates:
+#          - Host=**.somehost.org,**.anotherhost.org,{segment}.edgar.org
+#          filters:
+#          - AddRequestHeader=X-Host-Segment,Host-{segment}
+#        - id: method_route
+#          uri: http://localhost:9001
+#          predicates:
+#          - Method=GET
+#        - id: method_route
+#          uri: http://localhost:9001
+#          predicates:
+#          - Path=/foo/{segment},/bar/{segment}
+#        - id: query_route
+#          uri: http://localhost:9001
+#          predicates:
+#          - Query=foo,bar
+#         - id: query_route2
+#           uri: http://localhost:9001
+#           predicates:
+#           - Query=foo
+#          - id: remote_addr_route
+#            uri: http://localhost:9001
+#            predicates:
+#            - RemoteAddr=192.168.1.1/24,172.16.1.1/24
+#          - id: remote_addr_route
+#            uri: http://localhost:9001
+#            predicates:
+#            - name: RemoteAddr
+#              args:
+#                remoteAddressResolver: "#{@remoteAddressResolver}"
+#                sources:
+#                - 192.168.1.1/24
+#                - 172.16.1.1/24
+#        - id: devops_route
+#          uri: http://localhost:9001
+#          predicates:
+#          - name: Devops #命名RoutePredicateFactory时的前面部分
+#            args:
+#              name: user
+#              devopsUser:
+#              - Edgar
+#              - Git
