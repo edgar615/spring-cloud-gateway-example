@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+management:
+  endpoint:
+    gateway:
+      enabled: true # default value
+  endpoints:
+    web:
+      exposure:
+        include: gateway
+
+#spring:
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: body_read
+#          uri: http://localhost:9001
+#          predicates:
+#            - After=2020-04-20T00:00:00+08:00[Asia/Shanghai]

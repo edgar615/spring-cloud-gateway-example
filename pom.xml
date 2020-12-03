@@ -19,6 +19,7 @@
         <module>rewrite-body</module>
         <module>eurake-server</module>
         <module>discovery</module>
+        <module>dynamic</module>
     </modules>
 
     <parent>
